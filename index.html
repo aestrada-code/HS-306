@@ -4,71 +4,1576 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HS Science Biology Inventory | HS 306</title>
+
 <style>
-:root{--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--accent2:#0f766e;--warm:#f59e0b;--danger:#dc2626;}
-*{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)} a{color:var(--accent)} .wrap{max-width:1450px;margin:auto;padding:28px}
-header{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;padding:34px;border-radius:24px;position:relative;overflow:hidden;box-shadow:0 18px 50px #0f172a22}
-header:after{content:"🧬  ⚗️  🔬";position:absolute;right:28px;bottom:18px;font-size:42px;opacity:.22;letter-spacing:14px}
-h1{font-size:clamp(28px,4vw,52px);margin:0 0 8px;letter-spacing:-1.5px} .subtitle{color:#dbeafe;max-width:800px;line-height:1.6}
-.toolbar{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;margin:22px 0} input,select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit;color:var(--ink)} 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0} .stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px} .stat b{display:block;font-size:30px} .stat span{color:var(--muted);font-size:13px}
-.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:32px 0 14px} h2{font-size:25px;margin:0} .pill{font-size:12px;padding:5px 9px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px} .kit{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px} .kit .icon{font-size:30px} .kit h3{margin:0;font-size:18px} .kit p{color:var(--muted);line-height:1.5;font-size:14px} .kit ul{padding-left:20px;margin:4px 0;font-size:13px;line-height:1.6} .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto} .btn{display:inline-block;padding:8px 11px;border-radius:10px;background:#eff6ff;color:#1d4ed8;text-decoration:none;font-size:12px;font-weight:700} .btn.green{background:#ecfdf5;color:#047857}
-.table-wrap{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:auto} table{border-collapse:collapse;width:100%;min-width:950px} th{background:#f8fafc;text-align:left;font-size:12px;color:#475569;position:sticky;top:0;z-index:1} th,td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top} td{font-size:13px} tr:hover td{background:#f8fbff} .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#f1f5f9;font-size:11px;color:#475569} .cab{font-weight:800;color:#1e3a8a} .stock{font-weight:700;color:#047857} .empty{padding:35px;text-align:center;color:var(--muted)} footer{margin:35px 0 10px;color:var(--muted);font-size:12px;line-height:1.6}
-@media(max-width:900px){.toolbar{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,1fr)}.wrap{padding:15px}} @media(max-width:520px){.toolbar{grid-template-columns:1fr}}
+:root{
+  --bg:#f5f7fb;
+  --panel:#fff;
+  --ink:#172033;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --accent:#2563eb;
+  --accent2:#0f766e;
+  --warm:#f59e0b;
+  --danger:#dc2626;
+}
+
+*{
+  box-sizing:border-box
+}
+
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--bg);
+  color:var(--ink)
+}
+
+a{
+  color:var(--accent)
+}
+
+.wrap{
+  max-width:1450px;
+  margin:auto;
+  padding:28px
+}
+
+header{
+  background:linear-gradient(135deg,#0f172a,#1e3a8a);
+  color:#fff;
+  padding:34px;
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 18px 50px #0f172a22
+}
+
+header:after{
+  content:"🧬  ⚗️  🔬";
+  position:absolute;
+  right:28px;
+  bottom:18px;
+  font-size:42px;
+  opacity:.22;
+  letter-spacing:14px
+}
+
+h1{
+  font-size:clamp(28px,4vw,52px);
+  margin:0 0 8px;
+  letter-spacing:-1.5px
+}
+
+.subtitle{
+  color:#dbeafe;
+  max-width:800px;
+  line-height:1.6
+}
+
+.toolbar{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:12px;
+  margin:22px 0
+}
+
+input,
+select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  font:inherit;
+  color:var(--ink)
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:20px 0
+}
+
+.stat{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px
+}
+
+.stat b{
+  display:block;
+  font-size:30px
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:13px
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:32px 0 14px
+}
+
+h2{
+  font-size:25px;
+  margin:0
+}
+
+.pill{
+  font-size:12px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#dbeafe;
+  color:#1d4ed8;
+  font-weight:700
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:14px
+}
+
+.kit{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px
+}
+
+.kit .icon{
+  font-size:30px
+}
+
+.kit h3{
+  margin:0;
+  font-size:18px
+}
+
+.kit p{
+  color:var(--muted);
+  line-height:1.5;
+  font-size:14px
+}
+
+.kit ul{
+  padding-left:20px;
+  margin:4px 0;
+  font-size:13px;
+  line-height:1.6
+}
+
+.links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:auto
+}
+
+.btn{
+  display:inline-block;
+  padding:8px 11px;
+  border-radius:10px;
+  background:#eff6ff;
+  color:#1d4ed8;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700
+}
+
+.btn.green{
+  background:#ecfdf5;
+  color:#047857
+}
+
+.table-wrap{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:auto
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:1050px
+}
+
+th{
+  background:#f8fafc;
+  text-align:left;
+  font-size:12px;
+  color:#475569;
+  position:sticky;
+  top:0;
+  z-index:1
+}
+
+th,
+td{
+  padding:13px 14px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top
+}
+
+td{
+  font-size:13px
+}
+
+tr:hover td{
+  background:#f8fbff
+}
+
+.tag{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#f1f5f9;
+  font-size:11px;
+  color:#475569
+}
+
+.brand-tag{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#ecfdf5;
+  color:#047857;
+  font-size:11px;
+  font-weight:800;
+  white-space:nowrap
+}
+
+.cab{
+  font-weight:800;
+  color:#1e3a8a
+}
+
+.stock{
+  font-weight:700;
+  color:#047857
+}
+
+.empty{
+  padding:35px;
+  text-align:center;
+  color:var(--muted)
+}
+
+footer{
+  margin:35px 0 10px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6
+}
+
+@media(max-width:900px){
+  .toolbar{
+    grid-template-columns:1fr 1fr
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .wrap{
+    padding:15px
+  }
+}
+
+@media(max-width:520px){
+  .toolbar{
+    grid-template-columns:1fr
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="wrap">
+
 <header>
+
 <div class="pill">HS SCIENCE • ROOM HS 306</div>
+
 <h1>Biology & Life Science Inventory</h1>
-<div class="subtitle">A searchable inventory of equipment, supplies and teaching kits. Use the filters to locate materials by cabinet, category or item name. Kit pages include manufacturer information where it could be verified.</div>
+
+<div class="subtitle">
+A searchable inventory of equipment, supplies and teaching kits.
+Use the filters to locate materials by cabinet, category or item name.
+Kit pages include manufacturer information where it could be verified.
+</div>
+
 </header>
+
+
+<!-- =====================================================
+     STATISTICS
+     ===================================================== -->
+
 <div class="stats">
-<div class="stat"><b id="total">0</b><span>Inventory entries</span></div>
-<div class="stat"><b id="kits">0</b><span>Teaching kits</span></div>
-<div class="stat"><b id="equipment">0</b><span>Equipment entries</span></div>
-<div class="stat"><b id="cabinets">0</b><span>Cabinet labels</span></div>
+
+<div class="stat">
+<b id="total">0</b>
+<span>Inventory entries</span>
 </div>
+
+<div class="stat">
+<b id="kits">0</b>
+<span>Teaching kits</span>
+</div>
+
+<div class="stat">
+<b id="equipment">0</b>
+<span>Equipment entries</span>
+</div>
+
+<div class="stat">
+<b id="cabinets">0</b>
+<span>Cabinet labels</span>
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     FILTERS
+     ===================================================== -->
+
 <div class="toolbar">
-<input id="search" placeholder="Search item, cabinet, room or category…">
-<select id="category"><option value="">All categories</option></select>
-<select id="subcat"><option value="">All types</option><option>Equipment</option><option>Supplies</option><option>Kit</option></select>
-<select id="cabinet"><option value="">All cabinets</option></select>
+
+<input
+id="search"
+placeholder="Search item, cabinet, room or category…"
+>
+
+<select id="category">
+<option value="">All categories</option>
+</select>
+
+<select id="subcat">
+<option value="">All types</option>
+<option>Equipment</option>
+<option>Supplies</option>
+<option>Kit</option>
+</select>
+
+<select id="cabinet">
+<option value="">All cabinets</option>
+</select>
+
 </div>
-<div class="section-title"><h2>Verified / researched kits</h2><span class="pill">Manufacturer sources</span></div>
+
+
+<!-- =====================================================
+     RESEARCHED KITS
+     ===================================================== -->
+
+<div class="section-title">
+
+<h2>Verified / researched kits</h2>
+
+<span class="pill">
+Manufacturer sources
+</span>
+
+</div>
+
 <div class="grid" id="kitGrid"></div>
-<div class="section-title"><h2>Inventory directory</h2><span class="pill" id="count">0 items</span></div>
+
+
+<!-- =====================================================
+     INVENTORY DIRECTORY
+     ===================================================== -->
+
+<div class="section-title">
+
+<h2>Inventory directory</h2>
+
+<span class="pill" id="count">
+0 items
+</span>
+
+</div>
+
+
 <div class="table-wrap">
-<table><thead><tr><th>Cabinet</th><th>Item</th><th>In stock</th><th>Category</th><th>Type</th><th>Room</th></tr></thead><tbody id="tbody"></tbody></table>
-<div class="empty" id="empty" hidden>No matching inventory entries.</div>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Cabinet</th>
+<th>Item</th>
+<th>Brand</th>
+<th>In stock</th>
+<th>Category</th>
+<th>Type</th>
+<th>Room</th>
+</tr>
+
+</thead>
+
+<tbody id="tbody"></tbody>
+
+</table>
+
+<div class="empty" id="empty" hidden>
+No matching inventory entries.
 </div>
+
+</div>
+
+
 <footer>
-<strong>Research note:</strong> Manufacturer components are listed only for kits with an identifiable manufacturer/source. Names such as “cellular respiration kit,” “photosynthesis kit,” and generic teaching kits remain in the directory, but their exact brand and contents need a photo of the box, catalogue number or instructor manual before they can be verified reliably. Always check the current manufacturer manual and SDS before use.
+
+<strong>Research note:</strong>
+Manufacturer information is displayed only for kits whose manufacturer
+could be identified from the available product information.
+Generic kits such as “Cellular Respiration Kit” and “Photosynthesis Kit”
+remain in the inventory without a brand until the exact manufacturer
+can be verified from a box, catalogue number, product label or manual.
+Always check the current manufacturer documentation and SDS before use.
+
 </footer>
+
 </div>
+
+
 <script>
-const inventory=[{"cabinet": "A", "name": "Disposable Mouthpieces", "stock": "142 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Disposable Bacteria Filter", "stock": "120 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Go Wireless Heart Rate", "stock": "1 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Exercise Heart Rate Monitor", "stock": "1 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Hand Grip Heart Rate Monitor", "stock": "3 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "EKG Sensor", "stock": "2 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Spirometer Sensor", "stock": "2 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Blood Pressure Sensor", "stock": "2 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "A", "name": "Spirometer Adapter", "stock": "1 u", "category": "VERNIER", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Lancets", "stock": "1 Box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "India Ink Solvent", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Autoclave Bags", "stock": "1 Box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Sponges", "stock": "12 Boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Micropore Tape", "stock": "18 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "White Face Masks", "stock": "2 Boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Sterile Plastic Pipettes", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Chromatography Paper", "stock": "1 big roll", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Gamma-Radiation Sterilized Vials", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Dialysis Tubing", "stock": "24 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Protein Test Strips", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Thermometer", "stock": "7 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Urine Test Strips - Glucose", "stock": "8 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Urine Test Strips - Glucose, Ketones, pH, and Proteins", "stock": "9 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Fake Urine", "stock": "3 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Fake Urine - Protein", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Fake Urine - Glucose", "stock": "3 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "L Nitrile Gloves Sani Guard", "stock": "8 Boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "L Nitrile Gloves Shield Line", "stock": "3 Boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "M Nitrile Gloves Sani Guard", "stock": "6 Boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "S Nitrile Gloves Londond Labs", "stock": "5 Boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "B", "name": "Stethoscopes", "stock": "20 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Oximeter", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Digital Glucometer", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Manual Blood Pressure Monitor", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Blood Pressure Monitor Cuff", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Blood Pressure Monitor Arm", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "B", "name": "Taylor Hammer", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "C", "name": "Biohazard Bags", "stock": "2 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "D", "name": "Blender", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "D", "name": "Manual Spirometer", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "E", "name": "Cellular Respiration Kit", "stock": "1 kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "E", "name": "Photosynthesis Kit", "stock": "1 kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "H", "name": "Genes & Family Relationships Kit", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "H", "name": "Amino Acids & Lipids Molecular Kit 15 Small", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "H", "name": "Amino Acids & Lipids Molecular Kit Medium", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "H", "name": "Frequency of Blood Types", "stock": "2 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "H", "name": "Stick to Science Genetic Cards (for Punnett Square)", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "G", "name": "Card Games RNA Simulation", "stock": "5 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "H", "name": "Color Beads", "stock": "1 plastic container", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "H", "name": "Sterile Cotton-Tipped Applicators", "stock": "8 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "H", "name": "4-Division Petri Dishes", "stock": "8 packs", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "H", "name": "Petri Dishes", "stock": "12 packs", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "H", "name": "Mini Petri Dishes", "stock": "40 unit", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "H", "name": "Manual Metal Calipers", "stock": "14 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "H", "name": "Plastic Calipers", "stock": "6 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "H", "name": "Digital Metal Calipers", "stock": "3 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "H", "name": "DNA Necklace (Medicine Cups, String, Lysis Bottles, Filter Paper)", "stock": "1 u", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "N", "name": "DNA Wash Buffer", "stock": "3 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "HBC Buffer", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Solution 3 Omega Biotech", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Solution 2 Omega Biotech", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "EDVOKIT 962 Identification of Genetically Modified Foods Using PCR", "stock": "1 u", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "N", "name": "EDVOKIT 345 Exploring Genetics of Taste", "stock": "1 u", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "N", "name": "EDVOKIT 223 Transformation with Green Fluorescent Protein", "stock": "1 u", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "N", "name": "Extraction Solution 120 mL", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Trypan Blue 100 mL", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Blue Manual Spirometer Mouthpieces", "stock": "6 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Yellow Plastic Pipettes 1 mL", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Plastic Pipettes 1 mL", "stock": "3 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Collection Tubes 2 mL", "stock": "2 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "DNA Mini Columns", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Falcon Tubes 14 mL Blue", "stock": "5 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Falcon Tubes 15 mL Green", "stock": "4 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Falcon Tubes 50 mL Blue Lid", "stock": "110 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Falcon Tubes Blue Lids", "stock": "3 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Microcentrifuge Tubes 0.2 mL", "stock": "6 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "N", "name": "Medicine Cups", "stock": "1 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "O", "name": "Microtubes 1.5 mL", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "O", "name": "Gene Pulser / Micropulsers E. coli 50", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "O", "name": "Sterile Filters", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "O", "name": "Microcentrifuge Tubes 1.5 mL - Used", "stock": "4 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "O", "name": "Micropipettes 50 µL", "stock": "6 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "Micropipettes 10 µL", "stock": "6 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "Micropipettes 1000 µL", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "Micropipettes 100 µL", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "AC/DC Adapter for Light Box", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "Micropipette Hanging Supports", "stock": "1 bag", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "White LED Transilluminator", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "Plug Adapters", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "EA Controllers for Automatic Pipette", "stock": "1 box", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "O", "name": "Mini Light Box", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "P", "name": "Serological Pipettes 5 mL", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Serological Pipettes 10 mL", "stock": "2 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Tips 50 µL", "stock": "13 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Tips 10 µL", "stock": "6 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Tips 1000 µL", "stock": "1 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Tips 50 µL", "stock": "1 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Tips 200 µL", "stock": "1 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Sterile Plastic Pipettes 5 mL", "stock": "4 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Sterile Plastic Pipettes 10 mL", "stock": "4 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Sterile Plastic Pipettes 1 mL", "stock": "1 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Sterile Plastic Pipettes 1000 mL", "stock": "3 bags", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Plastic Pipettes 1 mL", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "P", "name": "Spectromic", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "1", "name": "Introduction to Qualitative Protein Analysis", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Osmosis in Animals", "stock": "2 boxes", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Restriction Enzymes with Ethidium Bromide", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "DNA Chips", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Metabolism Experiment", "stock": "2 boxes", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Leaf Disk Assay", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "ABO-Rh Blood Typing", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Carbon Dioxide DRT 0-200 ppm", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Carbon Dioxide Test Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Low Range Phosphate in Water Test Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Silica Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Hydrometer Test Kit", "stock": "2 boxes", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Gas Sampling Pump Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "1", "name": "Carbon Monoxide 25-400 ppm (10 Tubes)", "stock": "1 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "1", "name": "Oxygen 7-23% (5 Tubes)", "stock": "2 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "1", "name": "Ozone 0.5-10 ppm (10 Tubes)", "stock": "2 pack", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "2", "name": "Protein Synthesis Model", "stock": "6 boxes", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "2", "name": "Protein Synthesis Manipulatives Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "3", "name": "Foam Bone Dissection", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "3", "name": "Population, Genetics, and Evolution Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "3", "name": "Population Genetics Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "3", "name": "Scientific Method Kit (Water Sample)", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "3", "name": "Human Sex Chromosomes Kit", "stock": "1 box", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "3", "name": "Plastic Bottles with Stoppers 250 mL", "stock": "12 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "3", "name": "Water Sampling Small Glass Bottles", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Graduated Cylinder 25 mL", "stock": "13 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Graduated Cylinder 10 mL", "stock": "3 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Graduated Cylinder 50 mL", "stock": "6 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Erlenmeyer Flask 250 mL", "stock": "18 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Erlenmeyer Flask 500 mL", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Mortar and Pestle Small", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Mortar and Pestle Medium", "stock": "9 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "4", "name": "Mortar and Pestle Large", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Beakers 50 mL", "stock": "7 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Beakers 100 mL", "stock": "19 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Beakers 250 mL", "stock": "30 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Beakers 400 mL", "stock": "3 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Beakers 600 mL", "stock": "13 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Beakers 1000 mL", "stock": "4 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Magnifier", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "5", "name": "Glass Magnifying Loupes", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "6", "name": "New Clear Glass Slides", "stock": "10 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "In-Use Clear Glass Slides", "stock": "6 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Plastic Cover Slips (Needs to Peel Off)", "stock": "7 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Glass Cover Slips", "stock": "2 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Slide Staining Trays", "stock": "10 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "5-Slide Mailers - Colors", "stock": "2 box of 25", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Calibration Slides", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Clear Rulers", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Replacement Eyepieces", "stock": "4 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Calibration Slide Holders", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Specimen Slides", "stock": "", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Immersion Oil", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "6", "name": "Slide Making Kit", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "7", "name": "Kimwipes Large", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "7", "name": "Kimwipes Small", "stock": "5 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "7", "name": "Parafilm", "stock": "4 roll", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "8", "name": "Books", "stock": "", "category": "", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "9", "name": "Neubauer and Cell Counting Kit", "stock": "1", "category": "Microbiology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "9", "name": "Gram Staining Kit", "stock": "1", "category": "Microbiology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "9", "name": "Petri Seal", "stock": "1 roll", "category": "Microbiology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "9", "name": "Yeast Extract Dextrose 350 mL", "stock": "1 u", "category": "Microbiology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "9", "name": "Plastic Spreaders (2 Used, 2 New)", "stock": "4 pack", "category": "Microbiology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "9", "name": "Colony Counting Stickers", "stock": "2 pack", "category": "Microbiology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "9", "name": "Bacteria Sterilizer", "stock": "2 u", "category": "Microbiology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "9", "name": "Microtome", "stock": "1 u", "category": "Microbiology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "9", "name": "Sensi Disk (for Centrifuge)", "stock": "1 u", "category": "Microbiology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "9", "name": "Square Plate for Colony Counting (Square Petri Dish)", "stock": "10 u", "category": "Microbiology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "9", "name": "Neubauer Chambers", "stock": "5 u", "category": "Microbiology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "10", "name": "Antibiotic Sensitivity Kit", "stock": "1 Kit", "category": "Microbiology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "10", "name": "Winogradsky Column Set", "stock": "4 u", "category": "Microbiology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "11", "name": "Discovering Nucleic Acids Kit", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "11", "name": "Protein Assay Kit", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "11", "name": "Biotechnology Using Bioluminescent Protein (Only for 1 Demo, Buy Refill Synthetic Luciferase Solution Neo Sci)", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "11", "name": "Water Properties Lab", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "12", "name": "EDVOTEK Kit #951 Chromogenic Analysis of Water Contaminants", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "12", "name": "EDVO KIT #269 Introduction to ELISA Reactions", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "12", "name": "Sickle Cell Gene Detection DNA-Based", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "12", "name": "DNA Fingerprinting Using PCR", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "12", "name": "GeneJET PCR Purification Kit", "stock": "1 Kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "13", "name": "Agarose 100 g", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Agarose 3 g", "stock": "6 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Agarose 20 g", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Agarose 4 g", "stock": "4 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Gel Loading Buffer", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Agarose Dye Markers Set", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Introductory Gel Electrophoresis Refill", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Microcentrifuge Tube Racks", "stock": "9 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Nuclease-Free Water 1000 mL", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "50X TAE Buffer 1 L", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "10X TBE Buffer 1 L", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "10X Glycine/SDS Buffer 1 L", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Phosphate Buffered Saline", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "TBST 10X pH 7.6 500 mL", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "13", "name": "Electrophoresis Chamber (New)", "stock": "6 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "14", "name": "Electrophoresis Chamber (Old)", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "14", "name": "Electrophoresis Power Supply", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "14", "name": "Minicell Electrophoretic Gel System", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "15", "name": "Electrophoresis Sampler Kit", "stock": "2 kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "15", "name": "Loading Gel (Fake for Practice)", "stock": "6 kit", "category": "Biology", "subcategory": "Kit", "room": "HS 306"}, {"cabinet": "15", "name": "Carolina Blue Final DNA Stain 250 mL", "stock": "13 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "FlashBlue Stain Concentrate", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "Blue Stain 7 mL", "stock": "12 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "Blue Stain 20 mL", "stock": "3 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "Instant Lambda DNA", "stock": "4 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "Dried Lambda DNA", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "HindIII Instant Enzyme", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "EcoRI Instant Enzyme", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "TBE 20X Buffer 500 mL", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "TBE 20X Buffer 150 mL", "stock": "2 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "DNA Precipitation Solution 210 mL", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "2X Laemmli Sample Buffer 30 mL", "stock": "1 u", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "15", "name": "6-Well Combs", "stock": "10 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "15", "name": "8-12-Well Combs", "stock": "4 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "15", "name": "1-4-Well Combs", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "15", "name": "4-8-Well Combs", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "15", "name": "8-10-Well Combs", "stock": "5 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "16", "name": "Vortex Spin (Mini)", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "16", "name": "Vortex Mixer", "stock": "2 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "16", "name": "Fotodyne", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "16", "name": "Mini Centrifuge", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "17", "name": "Filter Tips 5-10 µL", "stock": "10 racks", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "17", "name": "Filter Pipette Tips 200 µL (10 Racks)", "stock": "3 boxes", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "17", "name": "Filter Pipette Tips 20 µL (10 Racks)", "stock": "1 box", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "17", "name": "Pipette Tips 1000 µL", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "17", "name": "Pipette Tips 20 µL", "stock": "1 bag", "category": "Biology", "subcategory": "Supplies", "room": "HS 306"}, {"cabinet": "17", "name": "Electronic Pipette", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}, {"cabinet": "17", "name": "Charger (Electronic Pipette)", "stock": "1 u", "category": "Biology", "subcategory": "Equipment", "room": "HS 306"}];
-const kitResearch=[{"name": "EDVO-Kit #223 — GFP Bacterial Transformation", "match": "EDVOKIT 223", "brand": "EDVOTEK", "description": "Bacterial transformation using E. coli and pFluoroGreen plasmid DNA.", "components": ["BactoBeads™ E. coli GFP Host", "pFluoroGreen™ plasmid DNA", "Ampicillin", "IPTG", "CaCl₂", "Growth Additive", "ReadyPour™ Luria Broth Agar", "Luria Broth recovery medium", "Petri plates", "Transfer pipets, toothpicks and inoculating loops", "Microcentrifuge tubes"], "source": "https://www.edvotek.com/223", "video": "https://www.youtube.com/results?search_query=Edvotek+223+GFP+transformation"}, {"name": "EDVO-Kit #345 — Genetics of Taste (PTC SNP)", "match": "EDVOKIT 345", "brand": "EDVOTEK", "description": "DNA extraction, PCR, HaeIII restriction digest, gel electrophoresis and PTC taste comparison.", "components": ["PCR EdvoBeads™ Plus", "Universal DNA Buffer and TE Buffer", "LyphoPrimer™ Mix and LyphoControl™", "Dryzymes® HaeIII", "Restriction Enzyme Dilution Buffer", "100 bp DNA ladder", "Proteinase K", "PTC and control taste paper", "UltraSpec-Agarose™", "TBE buffer and SYBR® Safe stain", "PCR tubes, microtubes and salt packets"], "source": "https://www.edvotek.com/345", "video": "https://www.youtube.com/results?search_query=Edvotek+345+genetics+of+taste+PCR"}, {"name": "EDVO-Kit #962 — GMO Food Identification by PCR", "match": "EDVOKIT 962", "brand": "EDVOTEK", "description": "DNA extraction from food, PCR amplification and agarose gel electrophoresis to identify GMO indicator sequences.", "components": ["PCR EdvoBeads™ PLUS", "Universal DNA Buffer", "TE Buffer", "LyphoPrimer™ Mix", "GMO Positive LyphoControl™", "NaCl Solution", "DNA Extraction Buffer", "100 bp ladder", "Proteinase K", "SYBR® Safe Stain", "UltraSpec-Agarose™", "TBE electrophoresis buffer powder", "0.2 mL PCR tubes, micropestles, transfer pipets and microcentrifuge tubes"], "source": "https://www.edvotek.com/site/pdf/962.pdf", "video": "https://www.youtube.com/results?search_query=Edvotek+962+GMO+PCR+kit"}, {"name": "EDVO-Kit #951 — Chromogenic Water Contaminants", "match": "EDVOTEK Kit #951", "brand": "EDVOTEK", "description": "Colorimetric and fluorescence-based screening for coliforms and E. coli in water samples.", "components": ["E. coli BactoBeads™", "Citrobacter freundii BactoBeads™", "Coliform Detection Broth", "Indole Detection Reagent", "Nutrient broth", "Sterile water", "50 mL and 15 mL conical tubes", "1.5 mL screw-cap tubes", "Inoculation loops and sterile pipets"], "source": "https://www.edvotek.com/site/pdf/951.pdf", "video": "https://www.youtube.com/results?search_query=Edvotek+951+water+contaminants"}];
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const $=id=>document.getElementById(id);
-const unique=a=>[...new Set(a)].sort((a,b)=>String(a).localeCompare(String(b),undefined,{numeric:true}));
+
+/* =========================================================
+   INVENTORY
+   ========================================================= */
+
+const inventory = [
+
+{"cabinet":"A","name":"Disposable Mouthpieces","stock":"142 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Disposable Bacteria Filter","stock":"120 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Go Wireless Heart Rate","stock":"1 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Exercise Heart Rate Monitor","stock":"1 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Hand Grip Heart Rate Monitor","stock":"3 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"EKG Sensor","stock":"2 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Spirometer Sensor","stock":"2 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Blood Pressure Sensor","stock":"2 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"A","name":"Spirometer Adapter","stock":"1 u","category":"VERNIER","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"B","name":"Lancets","stock":"1 Box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"India Ink Solvent","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Autoclave Bags","stock":"1 Box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Sponges","stock":"12 Boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Micropore Tape","stock":"18 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"White Face Masks","stock":"2 Boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Sterile Plastic Pipettes","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Chromatography Paper","stock":"1 big roll","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Gamma-Radiation Sterilized Vials","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Dialysis Tubing","stock":"24 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Protein Test Strips","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Thermometer","stock":"7 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Urine Test Strips - Glucose","stock":"8 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Urine Test Strips - Glucose, Ketones, pH, and Proteins","stock":"9 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Fake Urine","stock":"3 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Fake Urine - Protein","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Fake Urine - Glucose","stock":"3 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"L Nitrile Gloves Sani Guard","stock":"8 Boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"L Nitrile Gloves Shield Line","stock":"3 Boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"M Nitrile Gloves Sani Guard","stock":"6 Boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"S Nitrile Gloves Londond Labs","stock":"5 Boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"B","name":"Stethoscopes","stock":"20 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"B","name":"Oximeter","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"B","name":"Digital Glucometer","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"B","name":"Manual Blood Pressure Monitor","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"B","name":"Blood Pressure Monitor Cuff","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"B","name":"Blood Pressure Monitor Arm","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"B","name":"Taylor Hammer","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"C","name":"Biohazard Bags","stock":"2 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+
+{"cabinet":"D","name":"Blender","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"D","name":"Manual Spirometer","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"E","name":"Cellular Respiration Kit","stock":"1 kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"E","name":"Photosynthesis Kit","stock":"1 kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+
+{"cabinet":"H","name":"Genes & Family Relationships Kit","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"H","name":"Amino Acids & Lipids Molecular Kit 15 Small","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"H","name":"Amino Acids & Lipids Molecular Kit Medium","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"H","name":"Frequency of Blood Types","stock":"2 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"H","name":"Stick to Science Genetic Cards (for Punnett Square)","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"G","name":"Card Games RNA Simulation","stock":"5 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"H","name":"Color Beads","stock":"1 plastic container","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"H","name":"Sterile Cotton-Tipped Applicators","stock":"8 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"H","name":"4-Division Petri Dishes","stock":"8 packs","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"H","name":"Petri Dishes","stock":"12 packs","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"H","name":"Mini Petri Dishes","stock":"40 unit","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"H","name":"Manual Metal Calipers","stock":"14 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"H","name":"Plastic Calipers","stock":"6 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"H","name":"Digital Metal Calipers","stock":"3 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"H","name":"DNA Necklace (Medicine Cups, String, Lysis Bottles, Filter Paper)","stock":"1 u","category":"Biology","subcategory":"Kit","room":"HS 306"},
+
+{"cabinet":"N","name":"DNA Wash Buffer","stock":"3 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"HBC Buffer","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Solution 3 Omega Biotech","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Solution 2 Omega Biotech","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"EDVOKIT 962 Identification of Genetically Modified Foods Using PCR","stock":"1 u","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"N","name":"EDVOKIT 345 Exploring Genetics of Taste","stock":"1 u","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"N","name":"EDVOKIT 223 Transformation with Green Fluorescent Protein","stock":"1 u","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"N","name":"Extraction Solution 120 mL","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Trypan Blue 100 mL","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Blue Manual Spirometer Mouthpieces","stock":"6 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Yellow Plastic Pipettes 1 mL","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Plastic Pipettes 1 mL","stock":"3 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Collection Tubes 2 mL","stock":"2 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"DNA Mini Columns","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Falcon Tubes 14 mL Blue","stock":"5 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Falcon Tubes 15 mL Green","stock":"4 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Falcon Tubes 50 mL Blue Lid","stock":"110 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Falcon Tubes Blue Lids","stock":"3 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Microcentrifuge Tubes 0.2 mL","stock":"6 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"N","name":"Medicine Cups","stock":"1 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+
+{"cabinet":"O","name":"Microtubes 1.5 mL","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"O","name":"Gene Pulser / Micropulsers E. coli 50","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"O","name":"Sterile Filters","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"O","name":"Microcentrifuge Tubes 1.5 mL - Used","stock":"4 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"O","name":"Micropipettes 50 µL","stock":"6 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"Micropipettes 10 µL","stock":"6 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"Micropipettes 1000 µL","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"Micropipettes 100 µL","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"AC/DC Adapter for Light Box","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"Micropipette Hanging Supports","stock":"1 bag","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"White LED Transilluminator","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"Plug Adapters","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"EA Controllers for Automatic Pipette","stock":"1 box","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"O","name":"Mini Light Box","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"P","name":"Serological Pipettes 5 mL","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Serological Pipettes 10 mL","stock":"2 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Tips 50 µL","stock":"13 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Tips 10 µL","stock":"6 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Tips 1000 µL","stock":"1 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Tips 50 µL","stock":"1 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Tips 200 µL","stock":"1 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Sterile Plastic Pipettes 5 mL","stock":"4 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Sterile Plastic Pipettes 10 mL","stock":"4 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Sterile Plastic Pipettes 1 mL","stock":"1 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Sterile Plastic Pipettes 1000 mL","stock":"3 bags","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Plastic Pipettes 1 mL","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"P","name":"Spectromic","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"1","name":"Introduction to Qualitative Protein Analysis","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Osmosis in Animals","stock":"2 boxes","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Restriction Enzymes with Ethidium Bromide","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"DNA Chips","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Metabolism Experiment","stock":"2 boxes","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Leaf Disk Assay","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"ABO-Rh Blood Typing","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Carbon Dioxide DRT 0-200 ppm","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Carbon Dioxide Test Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Low Range Phosphate in Water Test Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Silica Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Hydrometer Test Kit","stock":"2 boxes","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Gas Sampling Pump Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"1","name":"Carbon Monoxide 25-400 ppm (10 Tubes)","stock":"1 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"1","name":"Oxygen 7-23% (5 Tubes)","stock":"2 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"1","name":"Ozone 0.5-10 ppm (10 Tubes)","stock":"2 pack","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+
+{"cabinet":"2","name":"Protein Synthesis Model","stock":"6 boxes","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"2","name":"Protein Synthesis Manipulatives Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+
+{"cabinet":"3","name":"Foam Bone Dissection","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"3","name":"Population, Genetics, and Evolution Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"3","name":"Population Genetics Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"3","name":"Scientific Method Kit (Water Sample)","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"3","name":"Human Sex Chromosomes Kit","stock":"1 box","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"3","name":"Plastic Bottles with Stoppers 250 mL","stock":"12 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"3","name":"Water Sampling Small Glass Bottles","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"4","name":"Graduated Cylinder 25 mL","stock":"13 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Graduated Cylinder 10 mL","stock":"3 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Graduated Cylinder 50 mL","stock":"6 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Erlenmeyer Flask 250 mL","stock":"18 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Erlenmeyer Flask 500 mL","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Mortar and Pestle Small","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Mortar and Pestle Medium","stock":"9 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"4","name":"Mortar and Pestle Large","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"5","name":"Beakers 50 mL","stock":"7 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Beakers 100 mL","stock":"19 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Beakers 250 mL","stock":"30 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Beakers 400 mL","stock":"3 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Beakers 600 mL","stock":"13 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Beakers 1000 mL","stock":"4 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Magnifier","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"5","name":"Glass Magnifying Loupes","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"6","name":"New Clear Glass Slides","stock":"10 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"In-Use Clear Glass Slides","stock":"6 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Plastic Cover Slips (Needs to Peel Off)","stock":"7 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Glass Cover Slips","stock":"2 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Slide Staining Trays","stock":"10 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"5-Slide Mailers - Colors","stock":"2 box of 25","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Calibration Slides","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Clear Rulers","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Replacement Eyepieces","stock":"4 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Calibration Slide Holders","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Specimen Slides","stock":"","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Immersion Oil","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"6","name":"Slide Making Kit","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+
+{"cabinet":"7","name":"Kimwipes Large","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"7","name":"Kimwipes Small","stock":"5 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"7","name":"Parafilm","stock":"4 roll","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+
+{"cabinet":"8","name":"Books","stock":"","category":"","subcategory":"Supplies","room":"HS 306"},
+
+{"cabinet":"9","name":"Neubauer and Cell Counting Kit","stock":"1","category":"Microbiology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"9","name":"Gram Staining Kit","stock":"1","category":"Microbiology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"9","name":"Petri Seal","stock":"1 roll","category":"Microbiology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"9","name":"Yeast Extract Dextrose 350 mL","stock":"1 u","category":"Microbiology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"9","name":"Plastic Spreaders (2 Used, 2 New)","stock":"4 pack","category":"Microbiology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"9","name":"Colony Counting Stickers","stock":"2 pack","category":"Microbiology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"9","name":"Bacteria Sterilizer","stock":"2 u","category":"Microbiology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"9","name":"Microtome","stock":"1 u","category":"Microbiology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"9","name":"Sensi Disk (for Centrifuge)","stock":"1 u","category":"Microbiology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"9","name":"Square Plate for Colony Counting (Square Petri Dish)","stock":"10 u","category":"Microbiology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"9","name":"Neubauer Chambers","stock":"5 u","category":"Microbiology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"10","name":"Antibiotic Sensitivity Kit","stock":"1 Kit","category":"Microbiology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"10","name":"Winogradsky Column Set","stock":"4 u","category":"Microbiology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"11","name":"Discovering Nucleic Acids Kit","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"11","name":"Protein Assay Kit","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"11","name":"Biotechnology Using Bioluminescent Protein (Only for 1 Demo, Buy Refill Synthetic Luciferase Solution Neo Sci)","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"11","name":"Water Properties Lab","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+
+{"cabinet":"12","name":"EDVOTEK Kit #951 Chromogenic Analysis of Water Contaminants","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"12","name":"EDVO KIT #269 Introduction to ELISA Reactions","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"12","name":"Sickle Cell Gene Detection DNA-Based","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"12","name":"DNA Fingerprinting Using PCR","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"12","name":"GeneJET PCR Purification Kit","stock":"1 Kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+
+{"cabinet":"13","name":"Agarose 100 g","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Agarose 3 g","stock":"6 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Agarose 20 g","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Agarose 4 g","stock":"4 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Gel Loading Buffer","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Agarose Dye Markers Set","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Introductory Gel Electrophoresis Refill","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Microcentrifuge Tube Racks","stock":"9 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Nuclease-Free Water 1000 mL","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"50X TAE Buffer 1 L","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"10X TBE Buffer 1 L","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"10X Glycine/SDS Buffer 1 L","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Phosphate Buffered Saline","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"TBST 10X pH 7.6 500 mL","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"13","name":"Electrophoresis Chamber (New)","stock":"6 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"14","name":"Electrophoresis Chamber (Old)","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"14","name":"Electrophoresis Power Supply","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"14","name":"Minicell Electrophoretic Gel System","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"15","name":"Electrophoresis Sampler Kit","stock":"2 kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"15","name":"Loading Gel (Fake for Practice)","stock":"6 kit","category":"Biology","subcategory":"Kit","room":"HS 306"},
+{"cabinet":"15","name":"Carolina Blue Final DNA Stain 250 mL","stock":"13 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"FlashBlue Stain Concentrate","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"Blue Stain 7 mL","stock":"12 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"Blue Stain 20 mL","stock":"3 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"Instant Lambda DNA","stock":"4 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"Dried Lambda DNA","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"HindIII Instant Enzyme","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"EcoRI Instant Enzyme","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"TBE 20X Buffer 500 mL","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"TBE 20X Buffer 150 mL","stock":"2 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"DNA Precipitation Solution 210 mL","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"2X Laemmli Sample Buffer 30 mL","stock":"1 u","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"15","name":"6-Well Combs","stock":"10 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"15","name":"8-12-Well Combs","stock":"4 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"15","name":"1-4-Well Combs","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"15","name":"4-8-Well Combs","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"15","name":"8-10-Well Combs","stock":"5 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"16","name":"Vortex Spin (Mini)","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"16","name":"Vortex Mixer","stock":"2 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"16","name":"Fotodyne","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"16","name":"Mini Centrifuge","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+
+{"cabinet":"17","name":"Filter Tips 5-10 µL","stock":"10 racks","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"17","name":"Filter Pipette Tips 200 µL (10 Racks)","stock":"3 boxes","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"17","name":"Filter Pipette Tips 20 µL (10 Racks)","stock":"1 box","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"17","name":"Pipette Tips 1000 µL","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"17","name":"Pipette Tips 20 µL","stock":"1 bag","category":"Biology","subcategory":"Supplies","room":"HS 306"},
+{"cabinet":"17","name":"Electronic Pipette","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"},
+{"cabinet":"17","name":"Charger (Electronic Pipette)","stock":"1 u","category":"Biology","subcategory":"Equipment","room":"HS 306"}
+
+];
+
+
+/* =========================================================
+   RESEARCHED KITS
+   ========================================================= */
+
+const kitResearch = [
+
+{
+name:"ABO-Rh Blood Typing",
+match:"ABO-Rh Blood Typing",
+brand:"Carolina Biological",
+description:"Classroom ABO and Rh blood typing activity.",
+components:[
+"Synthetic blood samples",
+"Anti-A serum",
+"Anti-B serum",
+"Anti-Rh serum",
+"Blood typing materials"
+],
+source:"https://www.carolina.com/blood-typing",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+ABO+Rh+blood+typing"
+},
+
+{
+name:"Antibiotic Sensitivity Kit",
+match:"Antibiotic Sensitivity Kit",
+brand:"Carolina Biological",
+description:"Microbiology activity investigating antibiotic sensitivity.",
+components:[
+"Bacterial cultures",
+"Antibiotic disks",
+"Culture media",
+"Student materials"
+],
+source:"https://www.carolina.com/bacteria",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+Antibiotic+Sensitivity+Kit"
+},
+
+{
+name:"DNA Chips: Genes to Disease",
+match:"DNA Chips",
+brand:"Carolina Biological",
+description:"Microarray simulation introducing gene expression and disease-related expression patterns.",
+components:[
+"DNA chips",
+"Gene-expression simulation materials",
+"Student worksheets",
+"Teacher materials"
+],
+source:"https://www.carolina.com/gene-expression-advanced-topics/dna-chips-genes-to-disease-kit/211520.pr",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+DNA+Chips+Genes+to+Disease"
+},
+
+{
+name:"Leaf Disk Assay",
+match:"Leaf Disk Assay",
+brand:"Carolina Biological",
+description:"Photosynthesis investigation using leaf disks.",
+components:[
+"Leaf disk materials",
+"Photosynthesis assay materials",
+"Student instructions"
+],
+source:"https://www.carolina.com/life-science/ap-biology/traditional-ap-biology-kits/10361.ct",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+Leaf+Disk+Assay"
+},
+
+{
+name:"Osmosis in Animals",
+match:"Osmosis in Animals",
+brand:"Carolina Biological",
+description:"Investigation of osmosis in animal cells.",
+components:[
+"Osmosis materials",
+"Membrane materials",
+"Solutions",
+"Student instructions"
+],
+source:"https://www.carolina.com/life-science-kits",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+Osmosis+in+Animals"
+},
+
+{
+name:"Population Genetics Kit",
+match:"Population Genetics Kit",
+brand:"Carolina Biological",
+description:"Population genetics investigation involving allele frequencies and population change.",
+components:[
+"Population genetics materials",
+"Genetics models",
+"Population samples",
+"Teacher materials"
+],
+source:"https://www.carolina.com/traditional-ap-biology-kits",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+Population+Genetics+Kit"
+},
+
+{
+name:"Population, Genetics, and Evolution Kit",
+match:"Population, Genetics, and Evolution Kit",
+brand:"Carolina Biological",
+description:"Investigation of population genetics and evolutionary processes.",
+components:[
+"Genetic models",
+"Population materials",
+"Allele-frequency activities",
+"Teacher materials"
+],
+source:"https://www.carolina.com/carolina-ecokits/modeling-population-genetics-and-evolution-kit/187016.pr",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+Population+Genetics+Evolution+Kit"
+},
+
+{
+name:"Human Sex Chromosomes Kit",
+match:"Human Sex Chromosomes Kit",
+brand:"Carolina Biological",
+description:"Genetics activity focused on human sex chromosomes.",
+components:[
+"Chromosome models",
+"Sex chromosome materials",
+"Student activities",
+"Teacher instructions"
+],
+source:"https://www.carolina.com/genetics-kits",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+Human+Sex+Chromosomes+Kit"
+},
+
+{
+name:"Restriction Enzymes with Ethidium Bromide",
+match:"Restriction Enzymes with Ethidium Bromide",
+brand:"Carolina Biological",
+description:"DNA restriction-enzyme investigation.",
+components:[
+"Restriction enzymes",
+"DNA samples",
+"Buffers",
+"DNA analysis materials"
+],
+source:"https://www.carolina.com/traditional-ap-biology-kits",
+video:"https://www.youtube.com/results?search_query=Carolina+Biological+restriction+enzyme+DNA+kit"
+},
+
+{
+name:"Metabolism Experiment",
+match:"Metabolism Experiment",
+brand:"Lab-Aids",
+description:"Laboratory investigation of biological metabolism.",
+components:[
+"Metabolism chambers",
+"Capillary tube assemblies",
+"Carbon dioxide absorbent",
+"Student data materials",
+"Teacher guide"
+],
+source:"https://store.lab-aids.com/kits-and-modules/metabolism-experiment-kit",
+video:"https://www.youtube.com/results?search_query=LAB-AIDS+Metabolism+Experiment+Kit"
+},
+
+{
+name:"Low Range Phosphate in Water Test Kit",
+match:"Low Range Phosphate in Water Test Kit",
+brand:"LaMotte",
+description:"Water-quality test kit for low-range phosphate.",
+components:[
+"Phosphate reagents",
+"Test tubes",
+"Comparator",
+"Instruction materials"
+],
+source:"https://lamotte.com/product/low-range-phosphate-test-kit-3121-02/",
+video:"https://www.youtube.com/results?search_query=LaMotte+Low+Range+Phosphate+Test+Kit"
+},
+
+{
+name:"Silica Kit",
+match:"Silica Kit",
+brand:"LaMotte",
+description:"Water-quality test kit for silica.",
+components:[
+"Silica reagents",
+"Test tubes",
+"Color comparator",
+"Instructions"
+],
+source:"https://lamotte.com/silica-test-kit-4463-01",
+video:"https://www.youtube.com/results?search_query=LaMotte+Silica+Test+Kit"
+},
+
+{
+name:"EDVO-Kit #223 — GFP Bacterial Transformation",
+match:"EDVOKIT 223",
+brand:"EDVOTEK",
+description:"Bacterial transformation using E. coli and GFP plasmid DNA.",
+components:[
+"E. coli GFP host",
+"GFP plasmid DNA",
+"Ampicillin",
+"IPTG",
+"CaCl₂",
+"Growth medium",
+"Luria broth agar",
+"Petri plates",
+"Transfer pipets",
+"Microcentrifuge tubes"
+],
+source:"https://www.edvotek.com/223",
+video:"https://www.youtube.com/results?search_query=Edvotek+223+GFP+transformation"
+},
+
+{
+name:"EDVO-Kit #269 — Introduction to ELISA Reactions",
+match:"EDVO KIT #269",
+brand:"EDVOTEK",
+description:"Introduction to enzyme-linked immunosorbent assay principles.",
+components:[
+"Antigens",
+"Antibodies",
+"Detection reagents",
+"PBS",
+"Microplates",
+"Transfer pipets"
+],
+source:"https://www.edvotek.com/269",
+video:"https://www.youtube.com/results?search_query=Edvotek+269+ELISA"
+},
+
+{
+name:"EDVO-Kit #345 — Genetics of Taste",
+match:"EDVOKIT 345",
+brand:"EDVOTEK",
+description:"PCR and restriction analysis of the PTC taste gene.",
+components:[
+"PCR reagents",
+"Primer mix",
+"Control DNA",
+"HaeIII restriction enzyme",
+"DNA ladder",
+"Proteinase K",
+"Agarose",
+"TBE buffer",
+"DNA stain"
+],
+source:"https://www.edvotek.com/345",
+video:"https://www.youtube.com/results?search_query=Edvotek+345+genetics+of+taste"
+},
+
+{
+name:"EDVO-Kit #371 — DNA Fingerprinting Using PCR",
+match:"DNA Fingerprinting Using PCR",
+brand:"EDVOTEK",
+description:"PCR-based DNA fingerprinting activity.",
+components:[
+"PCR reagents",
+"Primer mix",
+"DNA templates",
+"DNA ladder",
+"Agarose",
+"Electrophoresis buffer",
+"DNA stain"
+],
+source:"https://www.edvotek.com/371",
+video:"https://www.youtube.com/results?search_query=Edvotek+371+DNA+Fingerprinting+PCR"
+},
+
+{
+name:"EDVO-Kit #951 — Chromogenic Water Contaminants",
+match:"EDVOTEK Kit #951",
+brand:"EDVOTEK",
+description:"Chromogenic and fluorescence-based screening for coliform bacteria and E. coli in water.",
+components:[
+"E. coli BactoBeads",
+"Citrobacter freundii BactoBeads",
+"Coliform detection broth",
+"Indole detection reagent",
+"Nutrient broth",
+"Sterile water",
+"Conical tubes",
+"Microtubes",
+"Inoculation loops"
+],
+source:"https://www.edvotek.com/site/pdf/951.pdf",
+video:"https://www.youtube.com/results?search_query=Edvotek+951+water+contaminants"
+},
+
+{
+name:"EDVO-Kit #962 — GMO Food Identification by PCR",
+match:"EDVOKIT 962",
+brand:"EDVOTEK",
+description:"DNA extraction, PCR amplification and agarose gel electrophoresis for GMO identification.",
+components:[
+"PCR EdvoBeads",
+"Universal DNA buffer",
+"TE buffer",
+"Primer mix",
+"GMO positive control",
+"DNA extraction buffer",
+"DNA ladder",
+"Proteinase K",
+"SYBR Safe stain",
+"UltraSpec agarose",
+"TBE buffer"
+],
+source:"https://www.edvotek.com/site/pdf/962.pdf",
+video:"https://www.youtube.com/results?search_query=Edvotek+962+GMO+PCR+kit"
+},
+
+{
+name:"Sickle Cell Gene Detection DNA-Based",
+match:"Sickle Cell Gene Detection DNA-Based",
+brand:"EDVOTEK",
+description:"DNA-based investigation of the mutation associated with sickle cell disease.",
+components:[
+"DNA samples",
+"Restriction analysis materials",
+"DNA ladder",
+"Electrophoresis materials",
+"DNA stain"
+],
+source:"https://www.edvotek.com/116-S",
+video:"https://www.youtube.com/results?search_query=Edvotek+116+Sickle+Cell+Gene+Detection"
+},
+
+{
+name:"GeneJET PCR Purification Kit",
+match:"GeneJET PCR Purification Kit",
+brand:"Thermo Scientific",
+description:"Silica spin-column kit for purification of DNA fragments from PCR reactions.",
+components:[
+"GeneJET purification columns",
+"Collection tubes",
+"Binding buffer",
+"Wash buffer",
+"Elution buffer"
+],
+source:"https://www.thermofisher.com/order/catalog/product/es/en/K0702",
+video:"https://www.youtube.com/results?search_query=Thermo+Scientific+GeneJET+PCR+Purification+Kit"
+}
+
+];
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+const esc = s =>
+String(s ?? '').replace(
+  /[&<>"']/g,
+  c => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c])
+);
+
+const $ = id => document.getElementById(id);
+
+const unique = a =>
+[...new Set(a)]
+.filter(v => String(v).trim() !== '')
+.sort((a,b) =>
+  String(a).localeCompare(
+    String(b),
+    undefined,
+    {
+      numeric:true,
+      sensitivity:'base'
+    }
+  )
+);
+
+
+/* =========================================================
+   ALPHABETICAL SORT
+   ========================================================= */
+
+function alphabetical(a,b){
+
+  return String(a.name || '').localeCompare(
+    String(b.name || ''),
+    undefined,
+    {
+      numeric:true,
+      sensitivity:'base'
+    }
+  );
+
+}
+
+
+/* =========================================================
+   NORMALIZE NAME
+   ========================================================= */
+
+function normalizeName(value){
+
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[®™]/g,'')
+    .replace(/[–—-]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+
+}
+
+
+/* =========================================================
+   BRAND MAP
+   ONLY VERIFIED / IDENTIFIED KITS
+   ========================================================= */
+
+const kitBrands = {
+
+  "osmosis in animals":"Carolina Biological",
+
+  "restriction enzymes with ethidium bromide":
+    "Carolina Biological",
+
+  "dna chips":
+    "Carolina Biological",
+
+  "leaf disk assay":
+    "Carolina Biological",
+
+  "abo-rh blood typing":
+    "Carolina Biological",
+
+  "population genetics kit":
+    "Carolina Biological",
+
+  "population, genetics, and evolution kit":
+    "Carolina Biological",
+
+  "human sex chromosomes kit":
+    "Carolina Biological",
+
+  "antibiotic sensitivity kit":
+    "Carolina Biological",
+
+  "metabolism experiment":
+    "Lab-Aids",
+
+  "low range phosphate in water test kit":
+    "LaMotte",
+
+  "silica kit":
+    "LaMotte",
+
+  "edvokit 962 identification of genetically modified foods using pcr":
+    "EDVOTEK",
+
+  "edvokit 345 exploring genetics of taste":
+    "EDVOTEK",
+
+  "edvokit 223 transformation with green fluorescent protein":
+    "EDVOTEK",
+
+  "edvotek kit #951 chromogenic analysis of water contaminants":
+    "EDVOTEK",
+
+  "edvo kit #269 introduction to elisa reactions":
+    "EDVOTEK",
+
+  "sickle cell gene detection dna-based":
+    "EDVOTEK",
+
+  "dna fingerprinting using pcr":
+    "EDVOTEK",
+
+  "genejet pcr purification kit":
+    "Thermo Scientific"
+
+};
+
+
+/* =========================================================
+   GET BRAND
+   ========================================================= */
+
+function getBrand(item){
+
+  if(item.subcategory !== 'Kit'){
+    return '';
+  }
+
+  const normalized = normalizeName(item.name);
+
+  if(kitBrands[normalized]){
+    return kitBrands[normalized];
+  }
+
+  if(normalized.includes('edvokit 962')){
+    return 'EDVOTEK';
+  }
+
+  if(normalized.includes('edvokit 345')){
+    return 'EDVOTEK';
+  }
+
+  if(normalized.includes('edvokit 223')){
+    return 'EDVOTEK';
+  }
+
+  if(normalized.includes('edvotek kit #951')){
+    return 'EDVOTEK';
+  }
+
+  if(normalized.includes('edvo kit #269')){
+    return 'EDVOTEK';
+  }
+
+  return '';
+
+}
+
+
+/* =========================================================
+   FILTER OPTIONS
+   ========================================================= */
+
 function fillFilters(){
-  unique(inventory.map(x=>x.category)).forEach(v=>$('category').insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`));
-  unique(inventory.map(x=>x.cabinet)).forEach(v=>$('cabinet').insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`));
+
+  unique(
+    inventory.map(x => x.category)
+  ).forEach(v => {
+
+    $('category').insertAdjacentHTML(
+      'beforeend',
+      `<option value="${esc(v)}">${esc(v)}</option>`
+    );
+
+  });
+
+
+  unique(
+    inventory.map(x => x.cabinet)
+  ).forEach(v => {
+
+    $('cabinet').insertAdjacentHTML(
+      'beforeend',
+      `<option value="${esc(v)}">${esc(v)}</option>`
+    );
+
+  });
+
 }
+
+
+/* =========================================================
+   RESEARCHED KITS
+   ONLY KITS ACTUALLY IN INVENTORY
+   ========================================================= */
+
 function renderKits(){
- $('kitGrid').innerHTML=kitResearch.map(k=>`<article class="kit"><div class="icon">🧬</div><h3>${esc(k.name)}</h3><span class="tag">${esc(k.brand)}</span><p>${esc(k.description)}</p><strong>Reported components</strong><ul>${k.components.map(c=>`<li>${esc(c)}</li>`).join('')}</ul><div class="links"><a class="btn" target="_blank" rel="noopener" href="${k.source}">Manufacturer source ↗</a><a class="btn green" target="_blank" rel="noopener" href="${k.video}">Videos / demos ↗</a></div></article>`).join('');
+
+  const inventoryKitNames =
+    inventory
+      .filter(x => x.subcategory === 'Kit')
+      .map(x => normalizeName(x.name));
+
+
+  const researched =
+    kitResearch
+      .filter(k => {
+
+        const researchName =
+          normalizeName(k.match);
+
+        return inventoryKitNames.some(invName =>
+
+          invName === researchName ||
+          invName.includes(researchName) ||
+          researchName.includes(invName)
+
+        );
+
+      })
+      .sort(alphabetical);
+
+
+  $('kitGrid').innerHTML =
+    researched.map(k => `
+
+      <article class="kit">
+
+        <div class="icon">🧬</div>
+
+        <h3>${esc(k.name)}</h3>
+
+        <span class="tag">
+          ${esc(k.brand)}
+        </span>
+
+        <p>
+          ${esc(k.description)}
+        </p>
+
+        <strong>
+          Reported components
+        </strong>
+
+        <ul>
+
+          ${k.components
+            .map(c => `<li>${esc(c)}</li>`)
+            .join('')}
+
+        </ul>
+
+        <div class="links">
+
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="${esc(k.source)}">
+            Manufacturer source ↗
+          </a>
+
+          <a
+            class="btn green"
+            target="_blank"
+            rel="noopener"
+            href="${esc(k.video)}">
+            Videos / demos ↗
+          </a>
+
+        </div>
+
+      </article>
+
+    `).join('');
+
 }
+
+
+/* =========================================================
+   MAIN INVENTORY RENDER
+   ========================================================= */
+
 function render(){
- const q=$('search').value.toLowerCase().trim(),cat=$('category').value,sub=$('subcat').value,cab=$('cabinet').value;
- const filtered=inventory.filter(x=>(!q||Object.values(x).join(' ').toLowerCase().includes(q))&&(!cat||x.category===cat)&&(!sub||x.subcategory===sub)&&(!cab||x.cabinet===cab));
- $('tbody').innerHTML=filtered.map(x=>`<tr><td class="cab">${esc(x.cabinet)}</td><td><strong>${esc(x.name)}</strong></td><td class="stock">${esc(x.stock)}</td><td><span class="tag">${esc(x.category)}</span></td><td>${esc(x.subcategory)}</td><td>${esc(x.room)}</td></tr>`).join('');
- $('empty').hidden=filtered.length>0;$('count').textContent=filtered.length+' items';
+
+  const q =
+    $('search')
+      .value
+      .toLowerCase()
+      .trim();
+
+  const cat =
+    $('category').value;
+
+  const sub =
+    $('subcat').value;
+
+  const cab =
+    $('cabinet').value;
+
+
+  /*
+   * FILTER
+   */
+
+  const filtered =
+    inventory.filter(x =>
+
+      (
+        !q ||
+
+        Object
+          .values(x)
+          .join(' ')
+          .toLowerCase()
+          .includes(q)
+      )
+
+      &&
+
+      (!cat || x.category === cat)
+
+      &&
+
+      (!sub || x.subcategory === sub)
+
+      &&
+
+      (!cab || x.cabinet === cab)
+
+    );
+
+
+  /*
+   * SORT AFTER FILTER
+   *
+   * This guarantees that every search/filter
+   * result remains alphabetical.
+   */
+
+  filtered.sort(alphabetical);
+
+
+  /*
+   * RENDER TABLE
+   */
+
+  $('tbody').innerHTML =
+    filtered.map(x => {
+
+      const brand =
+        getBrand(x);
+
+
+      return `
+
+        <tr>
+
+          <td class="cab">
+            ${esc(x.cabinet)}
+          </td>
+
+          <td>
+            <strong>
+              ${esc(x.name)}
+            </strong>
+          </td>
+
+          <td>
+
+            ${
+              brand
+
+              ?
+
+              `<span class="brand-tag">
+                ${esc(brand)}
+              </span>`
+
+              :
+
+              ''
+            }
+
+          </td>
+
+          <td class="stock">
+            ${esc(x.stock)}
+          </td>
+
+          <td>
+
+            ${
+              x.category
+
+              ?
+
+              `<span class="tag">
+                ${esc(x.category)}
+              </span>`
+
+              :
+
+              ''
+            }
+
+          </td>
+
+          <td>
+            ${esc(x.subcategory)}
+          </td>
+
+          <td>
+            ${esc(x.room)}
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join('');
+
+
+  $('empty').hidden =
+    filtered.length > 0;
+
+
+  $('count').textContent =
+    filtered.length +
+    (
+      filtered.length === 1
+        ? ' item'
+        : ' items'
+    );
+
 }
-$('total').textContent=inventory.length;$('kits').textContent=inventory.filter(x=>x.subcategory==='Kit').length;$('equipment').textContent=inventory.filter(x=>x.subcategory==='Equipment').length;$('cabinets').textContent=unique(inventory.map(x=>x.cabinet)).length;
-fillFilters();renderKits();render();
-['search','category','subcat','cabinet'].forEach(id=>$(id).addEventListener('input',render));
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+$('total').textContent =
+  inventory.length;
+
+
+$('kits').textContent =
+  inventory.filter(
+    x => x.subcategory === 'Kit'
+  ).length;
+
+
+$('equipment').textContent =
+  inventory.filter(
+    x => x.subcategory === 'Equipment'
+  ).length;
+
+
+$('cabinets').textContent =
+  unique(
+    inventory.map(x => x.cabinet)
+  ).length;
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+fillFilters();
+
+renderKits();
+
+render();
+
+
+/* =========================================================
+   LIVE SEARCH / FILTERS
+   ========================================================= */
+
+[
+  'search',
+  'category',
+  'subcat',
+  'cabinet'
+]
+.forEach(id => {
+
+  $(id).addEventListener(
+    'input',
+    render
+  );
+
+});
+
 </script>
-</body></html>
+
+</body>
+</html>
