@@ -243,17 +243,6 @@ tr:hover td{
   color:#475569
 }
 
-.brand-tag{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:999px;
-  background:#ecfdf5;
-  color:#047857;
-  font-size:11px;
-  font-weight:800;
-  white-space:nowrap
-}
-
 .cab{
   font-weight:800;
   color:#1e3a8a
@@ -1104,114 +1093,6 @@ function normalizeName(value){
 }
 
 
-/* =========================================================
-   BRAND MAP
-   ONLY VERIFIED / IDENTIFIED KITS
-   ========================================================= */
-
-const kitBrands = {
-
-  "osmosis in animals":"Carolina Biological",
-
-  "restriction enzymes with ethidium bromide":
-    "Carolina Biological",
-
-  "dna chips":
-    "Carolina Biological",
-
-  "leaf disk assay":
-    "Carolina Biological",
-
-  "abo-rh blood typing":
-    "Carolina Biological",
-
-  "population genetics kit":
-    "Carolina Biological",
-
-  "population, genetics, and evolution kit":
-    "Carolina Biological",
-
-  "human sex chromosomes kit":
-    "Carolina Biological",
-
-  "antibiotic sensitivity kit":
-    "Carolina Biological",
-
-  "metabolism experiment":
-    "Lab-Aids",
-
-  "low range phosphate in water test kit":
-    "LaMotte",
-
-  "silica kit":
-    "LaMotte",
-
-  "edvokit 962 identification of genetically modified foods using pcr":
-    "EDVOTEK",
-
-  "edvokit 345 exploring genetics of taste":
-    "EDVOTEK",
-
-  "edvokit 223 transformation with green fluorescent protein":
-    "EDVOTEK",
-
-  "edvotek kit #951 chromogenic analysis of water contaminants":
-    "EDVOTEK",
-
-  "edvo kit #269 introduction to elisa reactions":
-    "EDVOTEK",
-
-  "sickle cell gene detection dna-based":
-    "EDVOTEK",
-
-  "dna fingerprinting using pcr":
-    "EDVOTEK",
-
-  "genejet pcr purification kit":
-    "Thermo Scientific"
-
-};
-
-
-/* =========================================================
-   GET BRAND
-   ========================================================= */
-
-function getBrand(item){
-
-  if(item.subcategory !== 'Kit'){
-    return '';
-  }
-
-  const normalized = normalizeName(item.name);
-
-  if(kitBrands[normalized]){
-    return kitBrands[normalized];
-  }
-
-  if(normalized.includes('edvokit 962')){
-    return 'EDVOTEK';
-  }
-
-  if(normalized.includes('edvokit 345')){
-    return 'EDVOTEK';
-  }
-
-  if(normalized.includes('edvokit 223')){
-    return 'EDVOTEK';
-  }
-
-  if(normalized.includes('edvotek kit #951')){
-    return 'EDVOTEK';
-  }
-
-  if(normalized.includes('edvo kit #269')){
-    return 'EDVOTEK';
-  }
-
-  return '';
-
-}
 
 
 /* =========================================================
@@ -1405,9 +1286,6 @@ function render(){
   $('tbody').innerHTML =
     filtered.map(x => {
 
-      const brand =
-        getBrand(x);
-
 
       return `
 
@@ -1421,24 +1299,6 @@ function render(){
             <strong>
               ${esc(x.name)}
             </strong>
-          </td>
-
-          <td>
-
-            ${
-              brand
-
-              ?
-
-              `<span class="brand-tag">
-                ${esc(brand)}
-              </span>`
-
-              :
-
-              ''
-            }
-
           </td>
 
           <td class="stock">
